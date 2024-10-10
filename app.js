@@ -11,9 +11,10 @@ let token;
 
 async function validateToken(req, res, next) {
   // const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
+  const tk = req.body.token
 
   try {
-    const response = await axios.get(`http://localhost:3000/validate/${token}`);
+    const response = await axios.get(`http://localhost:3000/validate/${token || tk}`);
 
     next();
   } catch (err) {
